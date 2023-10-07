@@ -1,8 +1,14 @@
 import { StyleSheet,View,Text, Pressable } from "react-native";
+import {useDispatch} from 'react-redux';
+import {deleteGoal} from '../redux/goalReducer';
 function ItemGoals(props) {
+    const dispatch = useDispatch();
+    function deleteGoalHandler(goalId){
+        dispatch(deleteGoal({id:goalId}));
+      }
     return (
         <View style={styles.goalItem} key={props.itemData.id}>
-        <Pressable android_ripple={{color:'white'}} onPress={props.onDelete.bind(this,props.itemData.key)}>
+        <Pressable style={({pressed})=>{pressed && styles.pressedItem}} android_ripple={{color:'white'}} onPress={() => deleteGoalHandler(props.itemData.key)}>
         <Text style={styles.goalText}>{props.itemData.text}</Text>
         </Pressable>
         </View>
@@ -21,4 +27,8 @@ const styles = StyleSheet.create({
         color:'white',
         fontSize:16,
     },
+    pressedItem:{
+        backgroundColor:'white',
+        opacity:0.5,
+    }
 });

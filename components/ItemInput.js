@@ -1,6 +1,9 @@
 import { StyleSheet,View,TextInput,Button, Modal,Image } from "react-native";
 import React,{useState} from 'react';
+import {Provider, useDispatch} from 'react-redux';
+import {addGoal} from '../redux/goalReducer';
 function ItemInput(props){
+    const dispatch = useDispatch();
     const [goalvalue, setgoalvalue] = useState(" ");
     function goalInutHandler(Text){
         setgoalvalue(Text);
@@ -10,10 +13,9 @@ function ItemInput(props){
             alert('Please enter a goal');
             return;
         }
-        props.onPress(goalvalue);
-        setgoalvalue('');
+        dispatch(addGoal({id:Math.random(),text:goalvalue}));
+        setgoalvalue(" ");
     }
-
 
     return(
         <Modal visible={props.visible} animationType="slide">
