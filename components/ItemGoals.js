@@ -9,7 +9,10 @@ function ItemGoals(props) {
     return (
         <View style={styles.goalItem} key={props.itemData.id}>
         <Pressable style={({pressed})=>{pressed && styles.pressedItem}} android_ripple={{color:'white'}} onPress={() => deleteGoalHandler(props.itemData.key)}>
-        <Text style={styles.goalText}>{props.itemData.text}</Text>
+        <Text style={styles.goalText}>{props.itemData.username}</Text>
+        <Text style={styles.goalText}>{props.itemData.phone}</Text>
+        <Text style={styles.goalText}>{props.itemData.email}</Text>
+        <Text style={styles.goalText}>{props.itemData.message}</Text>
         </Pressable>
         </View>
     );
@@ -23,7 +26,7 @@ const styles = StyleSheet.create({
         backgroundColor:'#f31282',
     },
     goalText:{
-        padding:10,
+        padding:2,
         color:'white',
         fontSize:16,
     },
