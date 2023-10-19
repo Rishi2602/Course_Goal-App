@@ -21,7 +21,9 @@ function ItemInput(props){
         });
     }
     async function addGoalHandler(){
-        if(!goalvalue.username || !goalvalue.phone || !goalvalue.email || !goalvalue.message){
+        const phonecheck=isNaN(goalvalue.phone);
+        const emailcheck=goalvalue.email.includes('@');
+        if(!goalvalue.username || !phonecheck || !emailcheck || !goalvalue.message){
             alert('Invalid Input');
             return;
         }
@@ -76,7 +78,7 @@ function ItemInput(props){
             {
                 placeholder:'Enter the message',
                 multiline:true,
-                goalvalue:goalvalue.message,
+                value:goalvalue.message,
                 onChangeText:goalInutHandler.bind(this,'message'),
             }
             }/>
