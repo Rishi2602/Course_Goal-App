@@ -21,9 +21,11 @@ function ItemInput(props){
         });
     }
     async function addGoalHandler(){
+        const usernamecheck=goalvalue.username.trim().length===0;
         const phonecheck=isNaN(goalvalue.phone);
         const emailcheck=goalvalue.email.includes('@');
-        if(!goalvalue.username || !phonecheck || !emailcheck || !goalvalue.message){
+        const messagecheck=goalvalue.message.trim().length===0;
+        if(usernamecheck || phonecheck || !emailcheck || messagecheck){
             alert('Invalid Input');
             return;
         }

@@ -2,7 +2,7 @@ import {createSlice} from '@reduxjs/toolkit';
 
 const goalReducer=createSlice({
     name:'goal',
-    initialState:{ids:[{id:Math.random()}]},
+    initialState:{ids:[]},
     reducers:{
         addGoal(state,action){
             state.ids.push(action.payload);
